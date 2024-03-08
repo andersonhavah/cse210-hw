@@ -39,7 +39,7 @@ class Program
         // Display to the user their grade letter
         Console.WriteLine($"Your grade is {gradeLetter}.");
 
-        // Output a message to let the use know whether or not they passed the class
+        // Output a message to let the user know whether or not they passed the class
         if (gradePercentage >= 70)
         {
             Console.WriteLine("Congratulations! You passed the class!");
