@@ -46,7 +46,7 @@ class Program
         }
         else 
         {
-            Console.WriteLine("Sorry, you didn't passed the class this semester! \nGood luck for next time!");
+            Console.WriteLine("Sorry, you didn't passed the class! \nGood luck for next time!");
         }
     }
 }
