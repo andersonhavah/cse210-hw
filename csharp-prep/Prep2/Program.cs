@@ -4,7 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Declare a variable to store the grade letter
+        // Declare a variable to store the grade letter 
         string gradeLetter;
 
         // Get the grade percentage from the user
