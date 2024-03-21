@@ -15,11 +15,19 @@ public class Journal
     // This method display every entry in the journal
     public void DisplayAll()
     {
-        Console.WriteLine("\n===== Journal Entries =====");
-        foreach (Entry entry in _entries)
+        if (_entries.Count == 0)
         {
-            entry.Display();
+            Console.WriteLine("There are no entries in the journal yet.");
         }
+        else
+        {
+            Console.WriteLine("\n===== Journal Entries =====");
+            foreach (Entry entry in _entries)
+            {
+                entry.Display();
+            }
+        }
+
     }
 
     // This method saves the entries of the user to a file
@@ -31,7 +39,7 @@ public class Journal
             {
                 foreach (Entry entry in _entries)
                 {
-                    writer.WriteLine($"{entry._date}|{entry._promptText}|{entry._entryText}");
+                    writer.WriteLine($"{entry._date}|{entry._promptText}|{entry._entryText}|{entry._location}|{entry._mood}");
                 }
             }
             Console.WriteLine($"Journal saved to \"{file}\" successfully.");
@@ -52,12 +60,14 @@ public class Journal
             foreach (string line in lines)
             {
                 string[] parts = line.Split('|');
-                if (parts.Length == 3)
+                if (parts.Length == 5)
                 {
                     string date = parts[0];
                     string promptText = parts[1];
                     string entryText = parts[2];
-                    Entry loadedEntry = new Entry(date, promptText, entryText);
+                    string location = parts[3];
+                    string mood = parts[4];
+                    Entry loadedEntry = new Entry(date, promptText, entryText, location, mood);
                     _entries.Add(loadedEntry);
                 }
             }
@@ -66,7 +76,7 @@ public class Journal
         catch (Exception ex)
         {
             Console.WriteLine($"Error loading journal from file: \"{file}\" in {ex.Message}.");
-            Console.WriteLine("Check the filename again to make sure it's well written. Maybe the file you requested doesn't exist");
+            Console.WriteLine("Check the filename again to make sure it's well-written. The file you requested doesn't exist.");
         }
     }
 }
