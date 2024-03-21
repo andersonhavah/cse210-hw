@@ -17,8 +17,10 @@ class Program
         promptGenerator._prompts.Add("What are you grateful for today?");
         promptGenerator._prompts.Add("What have you accomplished today toward one of your goals?");
         promptGenerator._prompts.Add("What is one positive thing that happened today at work?");
-        promptGenerator._prompts.Add("What are you the most proud of today?");
-
+        promptGenerator._prompts.Add("What is one negative thing that happened today at work?");
+        promptGenerator._prompts.Add("What are you most proud of today?");
+        promptGenerator._prompts.Add("What would it be if you had one thing to say to someone you love?");
+        promptGenerator._prompts.Add("What is your takeaway from the day you had?");
 
 
         // A welcome message to the Journal Program
@@ -45,8 +47,14 @@ class Program
                     Console.WriteLine($"{randomPrompt}");
                     Console.Write("> ");
                     string response = Console.ReadLine();
+                    Console.WriteLine("Enter location: ");
+                    Console.Write("> ");
+                    string location = Console.ReadLine();
+                    Console.WriteLine("Enter mood: ");
+                    Console.Write("> ");
+                    string mood = Console.ReadLine();
                     string date = DateTime.Now.ToShortDateString();
-                    Entry newEntry = new Entry(date, randomPrompt, response);
+                    Entry newEntry = new Entry(date, randomPrompt, response, location, mood);
                     journal.AddEntry(newEntry);
                     break;
                 case "2":
