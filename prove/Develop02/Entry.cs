@@ -3,20 +3,25 @@ public class Entry
     public string _date;
     public string _entryText;
     public string  _promptText;
+    public string _location;
+    public string _mood;
 
     // Create an Entry constructor for the Entry class
-    public Entry(string date, string promptText, string entryText)
+    public Entry(string date, string promptText, string entryText, string location, string mood)
     {
         _date = date;
         _promptText = promptText;
         _entryText = entryText;
+        _location = location;
+        _mood = mood;
     }
 
     // This method displays to the user what they typed as a reponse to the question
     public void Display()
     {
         Console.WriteLine($"Date: {_date} - Prompt: {_promptText}");
-        Console.WriteLine($"{_entryText}");
+        Console.WriteLine($"Location: {_location} - Mood: {_mood}");
+        Console.WriteLine($"Your Response: {_entryText}");
         Console.WriteLine("-----------------------------");
     }
 
