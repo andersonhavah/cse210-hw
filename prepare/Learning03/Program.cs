@@ -23,12 +23,5 @@ class Program
         Fraction fraction4 = new Fraction(1, 3);
         Console.WriteLine($"{fraction4.GetFractionString()}");
         Console.WriteLine($"{fraction4.GetDecimalValue()}");
-        
-        // fraction.SetTop(4);
-        // fraction.SetBottom(456);
-        int numerator = fraction1.GetTop(); 
-        int denominator = fraction1.GetBottom();
-
-
     }
 }
