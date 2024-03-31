@@ -19,20 +19,27 @@ class Scripture
 
     public void HideRandomWords(int numberToHide)
     {
-        Random random = new Random();
+        List<Word> nonHiddenWords = _words.Where(word => !word.IsHidden()).ToList(); // Filter non-hidden words
+        if (nonHiddenWords.Count < numberToHide)
+        {
+            // Handle case where there are less non-hidden words than desired to hide
+            numberToHide = nonHiddenWords.Count;
+        }
+
+        // Implement logic to hide a random number of words from the filtered list
         for (int i = 0; i < numberToHide; i++)
         {
-            int index = random.Next(_words.Count);
-            _words[index].Hide();
+            int randomIndex = new Random().Next(nonHiddenWords.Count);
+            nonHiddenWords[randomIndex].Hide();
         }
     }
 
     public string GetDisplayText()
     {
-        string displayText = $"{_reference.GetDisplayText()}\n";
+        string displayText = $"{_reference.GetDisplayReferenceText()}\n";
         foreach (Word word in _words)
         {
-            displayText += word.GetDisplayText() + " ";
+            displayText += word.GetDisplayWord() + " ";
         }
         return displayText.Trim();
     }
