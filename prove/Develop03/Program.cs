@@ -5,7 +5,7 @@ class Program
     static void Main(string[] args)
     {
         // Creating a new scripture
-        Scripture scripture = new Scripture(new Reference("John", 3, 16), "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.");
+        Scripture scripture = new Scripture(new Reference("John", 3, 16, 16), "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.");
 
         // Display the initial scripture
         DisplayScripture(scripture);
