@@ -1,5 +1,5 @@
 // Class representing a scripture reference
-class Reference
+public class Reference
 {
     private string _book;
     private int _chapter;
@@ -11,6 +11,7 @@ class Reference
         _book = book;
         _chapter = chapter;
         _verse = verse;
+        _endVerse = verse;
     }
 
     public Reference(string book, int chapter, int startVerse, int endVerse)
