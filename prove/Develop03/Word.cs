@@ -25,7 +25,7 @@ class Word
         return _isHidden;
     }
 
-    public string GetDisplayText()
+    public string GetDisplayWord()
     {
         if (_isHidden)
         {
