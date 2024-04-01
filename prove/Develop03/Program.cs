@@ -1,16 +1,41 @@
 using System;
+using System.Collections.Generic;
+
 
 class Program
 {
     static void Main(string[] args)
     {
         // Creating a new scripture
-        Scripture scripture = new Scripture(new Reference("John", 3, 16, 16), "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.");
+        ScriptureLibrary scriptureLibrary = new ScriptureLibrary();
 
-        // Display the initial scripture
+        // Main loop for practicing scriptures
+        while (true)
+        {
+            Scripture currentScripture = scriptureLibrary.GetRandomScripture();
+            PracticeScripture(currentScripture);
+
+            Console.WriteLine("\nPress Enter to practice another scripture or type 'quit' to exit.");
+            string input = Console.ReadLine();
+
+            if (input.ToLower() == "quit")
+            {
+                break;
+            }
+        }
+
+        Console.WriteLine("\nProgram ended. Press any key to exit.");
+        Console.ReadKey();
+
+
+    }
+
+    static void PracticeScripture(Scripture scripture)
+    {
+        Console.Clear();
         DisplayScripture(scripture);
 
-        // Main loop for hiding words
+        // Practice loop for hiding words
         while (!scripture.IsCompletelyHidden())
         {
             Console.WriteLine("\nPress Enter to continue or type 'quit' to finish.");
@@ -18,7 +43,7 @@ class Program
 
             if (input.ToLower() == "quit")
             {
-                break;
+                return;
             }
 
             // Hide a few random words
@@ -27,10 +52,8 @@ class Program
             // Display the updated scripture
             DisplayScripture(scripture);
         }
-
-        Console.WriteLine("\nProgram ended. Press any key to exit.");
-        Console.ReadKey();
     }
+
     static void DisplayScripture(Scripture scripture)
     {
         Console.Clear();
