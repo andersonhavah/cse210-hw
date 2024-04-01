@@ -1,5 +1,5 @@
 // Class representing a scripture passage
-class Scripture
+public class Scripture
 {
     private Reference _reference;
     private List<Word> _words;
@@ -36,7 +36,7 @@ class Scripture
 
     public string GetDisplayText()
     {
-        string displayText = $"{_reference.GetDisplayReferenceText()}\n";
+        string displayText = $"{_reference.GetDisplayReferenceText()}  ";
         foreach (Word word in _words)
         {
             displayText += word.GetDisplayWord() + " ";
@@ -55,4 +55,6 @@ class Scripture
         }
         return true;
     }
+
+
 }
