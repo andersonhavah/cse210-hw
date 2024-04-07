@@ -17,15 +17,17 @@ public class BreathingActivity : Activity
         ShowSpinner(3);
 
         // Implement breathing in/out logic
-        for (int i = 0; i < GetDuration(); i++)
+        for (int i = 2; i < GetDuration(); i++)
         {
-            if(i % 2 == 0)
             Console.Write("Breathe in...");
             ShowCountDown(i);
+            Thread.Sleep(1000);
+            Console.Write("\b \b");
+            Console.Write("Now breathe out...");
+            ShowCountDown(i);
+            Thread.Sleep(1000);
+            Console.Write("\b \b");
             Console.WriteLine();
-            Thread.Sleep(1000);
-            Console.WriteLine("Breathe out...");
-            Thread.Sleep(1000);
         }
 
         DisplayEndingMessage();
