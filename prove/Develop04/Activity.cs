@@ -35,13 +35,13 @@ public class Activity
         // for (int i = 0; i < seconds; i++)
         // {
             Console.Write("\\");
-            Thread.Sleep(250);
+            Thread.Sleep(500);
             Console.Write("\b \b");
             Console.Write("|");
-            Thread.Sleep(250);
+            Thread.Sleep(500);
             Console.Write("\b \b");
             Console.Write("-");
-            Thread.Sleep(250);
+            Thread.Sleep(500);
             Console.Write("\b \b");
             Console.Write("/");
             Console.Write("\b \b");
