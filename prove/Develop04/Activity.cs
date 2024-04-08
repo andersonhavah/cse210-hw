@@ -51,7 +51,7 @@ public class Activity
     {
         for (int i = seconds; i > 0; i--)
         {
-            Console.WriteLine($"{i}");
+            Console.Write($"{i}");
             Thread.Sleep(1000); // Pause for 1 second
             Console.Write("\b \b");
         }
