@@ -15,7 +15,7 @@ public class BreathingActivity : Activity
         ShowSpinner(3);
 
         // Implement breathing in/out logic
-        for (int i = 0; i * 2 < GetDuration(); i++)
+        for (int i = 0; i * i < GetDuration(); i++)
         {
             Console.WriteLine("Breathe in...");
             ShowCountDown(i);
