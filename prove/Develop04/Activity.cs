@@ -15,9 +15,9 @@ public class Activity
 
     public void DisplayStartingMessage()
     {
-        Console.WriteLine($"{_name}");
+        Console.WriteLine($"\n{_name}\n");
         Console.WriteLine(_description);
-        Console.Write("How long, in seconds, would you like for your sessions? ");
+        Console.Write("\nHow long, in seconds, would you like for your sessions? ");
         _duration = int.Parse(Console.ReadLine());
         Console.WriteLine("Get ready...");
         Thread.Sleep(1000); // Pause for 3 seconds
@@ -25,28 +25,26 @@ public class Activity
 
     public void DisplayEndingMessage()
     {
-        Console.WriteLine("Good job! You have completed the activity.");
-        Console.WriteLine($"Duration: {_duration} seconds");
+        Console.WriteLine("\nGood job! Well done!");
+        Console.WriteLine($"You have completed another {_duration} seconds of the {_name}\n");
         Thread.Sleep(3000); // Pause for 3 seconds
     }
 
     public void ShowSpinner(int seconds)
     {
-        // for (int i = 0; i < seconds; i++)
-        // {
-            Console.Write("\\");
-            Thread.Sleep(500);
-            Console.Write("\b \b");
-            Console.Write("|");
-            Thread.Sleep(500);
-            Console.Write("\b \b");
-            Console.Write("-");
-            Thread.Sleep(500);
-            Console.Write("\b \b");
-            Console.Write("/");
-            Console.Write("\b \b");
-            Console.WriteLine();
-        // }
+        int elapsedTime = 0;
+        char[] spinnerChars = new char[] { '-', '\\', '|', '/' };
+        int currentCharIndex = 0;
+
+        while (elapsedTime < seconds * 1000) // Convert seconds to milliseconds
+        {
+            Console.Write(spinnerChars[currentCharIndex]);
+            Thread.Sleep(500); // Adjust sleep time for desired animation speed
+
+            Console.Write("\b \b"); // Erase previous character and space for spinner movement
+            currentCharIndex = (currentCharIndex + 1) % spinnerChars.Length;
+            elapsedTime += 500;
+        }
     }
 
     public void ShowCountDown(int seconds)
@@ -55,6 +53,7 @@ public class Activity
         {
             Console.WriteLine($"{i}");
             Thread.Sleep(1000); // Pause for 1 second
+            Console.Write("\b \b");
         }
     }
 
