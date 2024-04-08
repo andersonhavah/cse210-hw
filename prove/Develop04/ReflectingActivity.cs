@@ -7,8 +7,8 @@ public class ReflectingActivity : Activity
     // This is the constructor
     public ReflectingActivity()
     {
-        SetName("Reflection");
-        SetDescription("This activity will help you reflect on times in your life when you have shown strength and resilience.");
+        SetName("\nWelcome to the Reflection Activity\n");
+        SetDescription("This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.");
         _prompts = new List<string>
         {
             "Think of a time when you stood up for someone else.",
@@ -34,8 +34,9 @@ public class ReflectingActivity : Activity
     public void Run()
     {
         DisplayStartingMessage();
-        Console.WriteLine("Selecting a random prompt...");
-        GetRandomPrompt();
+        ShowSpinner(3);
+
+        DisplayPrompt();
         DisplayQuestions();
 
         DisplayEndingMessage();
@@ -45,7 +46,7 @@ public class ReflectingActivity : Activity
     {
         Random rand = new Random();
         int index = rand.Next(_prompts.Count);
-        string randomPrompt = $"Prompt: {_prompts[index]}";
+        string randomPrompt = $"{_prompts[index]}";
         return randomPrompt;
     }
 
@@ -59,20 +60,23 @@ public class ReflectingActivity : Activity
 
     public void DisplayPrompt()
     {
-        Console.WriteLine("Reflect on the following questions:");
-        foreach (string question in _questions)
-        {
-            Console.WriteLine(question);
-            Thread.Sleep(3000); // Pause for 3 seconds after each question
-        }
+        Console.WriteLine("Consider the following prompt: ");
+        Console.WriteLine($"--- {GetRandomPrompt()} ---");
+        Thread.Sleep(2000); // Pause for 3 seconds after each prompt
+        Console.WriteLine("\nWhen you have something in your mind, press enter to continue.");
+        Console.ReadKey();
+
     }
 
     public void DisplayQuestions()
     {
-        Console.WriteLine("Reflect on the following questions:");
+        Console.WriteLine("\nNow ponder on each of the following questions as they related to this experience.");
+        Console.Write($"You may begin in: ");
+        ShowCountDown(5);
         foreach (string question in _questions)
         {
-            Console.WriteLine(question);
+            Console.Write($"> {question}");
+            ShowSpinner(3);
             Thread.Sleep(3000); // Pause for 3 seconds after each question
         }
     }
