@@ -7,7 +7,7 @@ public class ListingActivity : Activity
     // This is the constructor of the class
     public ListingActivity()
     {
-        SetName("Listing");
+        SetName("Welcome to the Listing Activity");
         SetDescription("This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.");
         _prompts = new List<string>
         {
@@ -22,13 +22,13 @@ public class ListingActivity : Activity
 
     public void Run()
     {
-        Console.WriteLine("Selecting a random prompt...");
+        DisplayStartingMessage();
+        ShowSpinner(3);
         GetRandomPrompt();
-        Console.WriteLine("Start listing...");
 
         List<string> items = GetListFromUser();
         _count = items.Count;
-        Console.WriteLine($"You listed {_count} items:");
+        Console.WriteLine($"\nYou listed {_count} items:");
 
         foreach (string item in items)
         {
@@ -42,16 +42,19 @@ public class ListingActivity : Activity
     {
         Random rand = new Random();
         int index = rand.Next(_prompts.Count);
-        Console.WriteLine($"Prompt: {_prompts[index]}");
+        Console.WriteLine("List as many responses as you can to the following prompt: ");
+        Console.WriteLine($"--- {_prompts[index]} ---");
     }
 
     public List<string> GetListFromUser()
     {
         List<string> items = new List<string>();
-        Console.WriteLine("Enter your list items (type 'done' to finish):");
+        Console.WriteLine("\nEnter your list items (type 'done' to finish):");
+        Console.Write("> ");
         string input = Console.ReadLine();
         while (input.ToLower() != "done")
         {
+            Console.Write("> ");
             items.Add(input);
             input = Console.ReadLine();
         }
